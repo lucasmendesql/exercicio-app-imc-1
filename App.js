@@ -8,12 +8,46 @@ import {
   View,
   Pressable,
   Alert,
+  Platform,
 } from "react-native";
 
 export default function App() {
-  const calcularImc = () => {
-    Alert.alert("Testando", "testandooooooooo");
+  const [nome, setNome] = useState("");
+  const [peso, setPeso] = useState("");
+  const [altura, setAltura] = useState("");
+
+  const nomeDigitado = (nomeDigitado) => {
+    setNome(nomeDigitado);
   };
+
+  const pesoDigitado = (pesoDigitado) => {
+    setPeso(pesoDigitado);
+  };
+
+  const alturaDigitado = (alturaDigitado) => {
+    setAltura(alturaDigitado);
+  };
+
+  const calcularImc = () => {
+    const imc = peso / (altura * altura);
+    console.log(imc);
+
+    if (imc < 18.5) {
+      alert("situação de magreza");
+    } else if (imc >= 18.5 && imc < 25) {
+      alert("situação de normalidade");
+    } else if (imc >= 25 && imc < 30) {
+      alert("situação de sobrepeso");
+    } else if (imc >= 30 && imc < 40) {
+      alert("situação de obesidade");
+    } else if (imc >= 40) {
+      alert("situação de obesidade grave");
+    } else {
+    }
+  };
+
+  let tipoTeclado =
+    Platform.OS === "ios" ? "numbers-and-punctuation" : "numeric";
 
   return (
     <SafeAreaView style={estilos.safeContainer}>
@@ -23,15 +57,28 @@ export default function App() {
       </View>
 
       <View>
-        <TextInput style={estilos.input} placeholder="Informe seu nome" />
+        <TextInput
+          style={estilos.input}
+          placeholder="Informe seu nome"
+          onChangeText={nomeDigitado}
+          value={nome}
+        />
       </View>
 
       <View style={estilos.viewInput}>
-        <TextInput style={estilos.input1} placeholder="Peso (ex: 80)" />
+        <TextInput
+          style={estilos.input1}
+          placeholder="Peso (ex: 80)"
+          onChangeText={pesoDigitado}
+          value={peso}
+          keyboardType={tipoTeclado}
+        />
         <TextInput
           style={estilos.input2}
-          keyboardType="numeric"
+          keyboardType={tipoTeclado}
           placeholder="Altura (ex: 1.75)"
+          onChangeText={alturaDigitado}
+          value={altura}
         />
       </View>
 
@@ -70,6 +117,7 @@ const estilos = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+    borderRadius: 5,
   },
 
   input1: {
@@ -78,6 +126,7 @@ const estilos = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     width: "40%",
+    borderRadius: 5,
   },
 
   input2: {
@@ -86,6 +135,7 @@ const estilos = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     width: "40%",
+    borderRadius: 5,
   },
 
   botaoInicial: {
