@@ -33,15 +33,15 @@ export default function App() {
     console.log(imc);
 
     if (imc < 18.5) {
-      return Alert.alert("Resultado", "situação de magreza");
+      return Alert.alert(`Olá, ${nome}`, "situação de magreza");
     } else if (imc >= 18.5 && imc < 25) {
-      return Alert.alert("Resultado", "situação de normalidade");
+      return Alert.alert(`Olá, ${nome}`, "situação de normalidade");
     } else if (imc >= 25 && imc < 30) {
-      return Alert.alert("Resultado", "situação de sobrepeso");
+      return Alert.alert(`Olá, ${nome}`, "situação de sobrepeso");
     } else if (imc >= 30 && imc < 40) {
-      return Alert.alert("Resultado", "situação de obesidade");
+      return Alert.alert(`Olá, ${nome}`, "situação de obesidade");
     } else if (imc >= 40) {
-      return Alert.alert("Resultado", "situação de obesidade grave");
+      return Alert.alert(`Olá, ${nome}`, "situação de obesidade grave");
     } else {
     }
   };
