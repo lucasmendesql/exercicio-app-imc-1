@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -8,6 +7,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 function Home() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <StatusBar barStyle="default" />
       <Text>Home!</Text>
     </View>
   );
@@ -16,6 +16,7 @@ function Home() {
 function Favoritos() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <StatusBar barStyle="default" />
       <Text>Favoritos!</Text>
     </View>
   );
@@ -24,6 +25,7 @@ function Favoritos() {
 function Publicar() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <StatusBar barStyle="default" />
       <Text>Publicar!</Text>
     </View>
   );
@@ -32,6 +34,7 @@ function Publicar() {
 function Perfil() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <StatusBar barStyle="default" />
       <Text>Perfil!</Text>
     </View>
   );
@@ -49,11 +52,17 @@ export default function App() {
 
             switch (route.name) {
               case "Favoritos":
-                iconName = focused ? "ios-list" : "ios-list-outline";
+                iconName = focused ? "heart-sharp" : "heart-outline";
                 break;
 
               case "Publicar":
-                iconName = focused ? "ios-list" : "ios-list-outline";
+                iconName = focused ? "add-circle" : "add-circle-outline";
+                break;
+
+              case "Perfil":
+                iconName = focused
+                  ? "person-circle-sharp"
+                  : "person-circle-outline";
                 break;
 
               default:
@@ -64,8 +73,8 @@ export default function App() {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: "blue",
-          tabBarInactiveTintColor: "lightblue",
+          tabBarActiveTintColor: "#372727 ",
+          tabBarInactiveTintColor: "black",
         })}
       >
         <Tab.Screen name="Home" component={Home} />
