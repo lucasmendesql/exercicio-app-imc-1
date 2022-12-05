@@ -40,6 +40,15 @@ function Perfil() {
   );
 }
 
+function Login() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <StatusBar barStyle="default" />
+      <Text>Login!</Text>
+    </View>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -81,6 +90,7 @@ export default function App() {
         <Tab.Screen name="Favoritos" component={Favoritos} />
         <Tab.Screen name="Publicar" component={Publicar} />
         <Tab.Screen name="Perfil" component={Perfil} />
+        <Tab.Screen name="Login" component={Login} />
       </Tab.Navigator>
     </NavigationContainer>
   );
